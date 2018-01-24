@@ -14,6 +14,7 @@ public class Homework1 {
 //		// TODO: Implement your project here
 		
 		String input = "251-*32*+";
+		input = "1251-*32*+*";
         Medhod medhod = new Medhod();
 
         if (args.length > 0) {

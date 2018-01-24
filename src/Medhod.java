@@ -1,8 +1,8 @@
 import java.util.Stack;
 
-public class Medhod {
-    Node root;
-    Node current;
+public class Medhod  {
+     Node root;
+     Node current;
     int N = 0;
     static String output = "";
     Node temp;
@@ -19,45 +19,74 @@ public class Medhod {
         }
     }
 
-    public void makeTree(Node node) {
+//    public void makeTree(Node node) {
+////        if (root == null) {
+////            root = node;
+////            current = root;
+////        } else if (isOperator(current.key)) {
+////            if (!isOperator(node.key)) {
+////                String a = node.key + "";
+////                node.value = Integer.parseInt(a);
+////            }
+////            if (current.right == null) {
+////                current.right = node;
+////                node.parent = current;
+////                if (isOperator(current.right.key)) {
+////                    current = current.right;
+////                }
+////
+////            } else if (current.left == null) {
+////                current.left = node;
+////                node.parent = current.left;
+////                if (isOperator(current.left.key)) {
+////                    current = current.left;
+////                }
+////            } else {
+////                current = current.parent;
+////                makeTree(node);
+////            }
+////        }
+////    }
 
-        if (root == null) {
+    public void makeTree(Node node) {
+        if (root == null && current == null) {
             root = node;
             current = root;
-        } else if (isOperator(current.key)) {
-            if (!isOperator(node.key)) {
-                String a = node.key + "";
-                node.value = Integer.parseInt(a);
-            }
+        } else{
             if (current.right == null) {
                 current.right = node;
                 node.parent = current;
                 if (isOperator(current.right.key)) {
                     current = current.right;
+                }else {
+                    String a = node.key + "";
+                    node.value = Integer.parseInt(a);
                 }
-
-            } else if (current.left == null) {
+            }else if (current.left == null) {
                 current.left = node;
-                node.parent = current.left;
+                node.parent = current;
                 if (isOperator(current.left.key)) {
                     current = current.left;
+                }else {
+                    String a = node.key + "";
+                    node.value = Integer.parseInt(a);
                 }
-            } else {
+            }else {
                 current = current.parent;
                 makeTree(node);
             }
         }
     }
-
     public void makeTree(String s) {
         for (int i = s.length() - 1; i >= 0; i--) {
             makeTree(new Node(s.charAt(i)));
         }
     }
 
-   
+    
 
     public void inorder() {
+        inorder(root);
         inorder(root);
     }
 
@@ -132,28 +161,27 @@ public class Medhod {
 
 
     //use stack
-    /*
-    public String Infix(String postfix) {
-        Stack<String> s = new Stack<>();
-
-        for (int i = 0; i < postfix.length(); i++) {
-            char c = postfix.charAt(i);
-            if (isOperator(c)) {
-                String b = s.pop();
-                String a = s.pop();
-                if (i == postfix.length() - 1) {
-                    s.push(a + c + b);
-                } else {
-                    s.push("(" + a + c + b + ")");
-                }
-
-            } else {
-                s.push("" + c);
-            }
-        }
-
-        return s.pop();
-    }
+//    public String Infix(String postfix) {
+//        Stack<String> s = new Stack<>();
+//
+//        for (int i = 0; i < postfix.length(); i++) {
+//            char c = postfix.charAt(i);
+//            if (isOperator(c)) {
+//                String b = s.pop();
+//                String a = s.pop();
+//                if (i == postfix.length() - 1) {
+//                    s.push(a + c + b);
+//                } else {
+//                    s.push("(" + a + c + b + ")");
+//                }
+//
+//            } else {
+//                s.push("" + c);
+//            }
+//        }
+//
+//        return s.pop();
+//    }
 
     public String Calculate(String input) {
         Stack<String> s = new Stack<>();
@@ -177,7 +205,6 @@ public class Medhod {
         }
         return s.pop();
     }
-    */
 }
 
 

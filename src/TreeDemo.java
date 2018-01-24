@@ -358,6 +358,7 @@ public class TreeDemo extends JPanel implements TreeSelectionListener {
         //creating and showing this application's GUI.
 
         String input = "251-*32*+";
+        input = "1251-*32*+*";
         Medhod medhod = new Medhod();
 
         if (args.length > 0) {
